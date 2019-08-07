@@ -1,0 +1,18 @@
+第一章 绪论
+
+1.1 什么是数据结构
+1.2 基本概念和术语
+    数据
+    数据元素
+    数据对象
+    数据结构（集合、线性结构、树形结构、图状结构或网状结构）
+    Data_Structure=(D,S)
+    Complex=(C,R)
+    逻辑结构
+    物理结构/存储结构、位(bit)、元素(element）、结点（node）、data field（数据域）
+    顺序映像-顺序存储结构、非顺序映像-链式存储结构、指针（pointer）
+    虚拟存储结构
+    数据类型（data type）：原子类型(atomic data type）、结构类型（固定聚合类型、可编剧和类型）
+    抽象数据类型（abstract data type）
+    （D,S,P）
+    
