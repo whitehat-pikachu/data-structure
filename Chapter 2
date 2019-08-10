@@ -5,6 +5,52 @@ file
 (a1, a2,...,an-1,an)
 list
 
+adt list{
+  d={ai| ai∈Eleset, i=1,2,..,n,n>=0}
+  R1={<ai-1,ai>|ai-1,ai∈D,i=2,...,n}
+  InitList(&L)
+  DestoryList(&L)
+  ClearList(&L)
+  ListEmpty(L)
+  ListLength(L)
+  GetElem(L,i,&e)
+  LocateElem(L,e,compare())
+  PriorElem(L,cur_e,&pre_e)
+  NextElem(L,cur_e,&next_e)
+  ListInsert(&L,i,e)
+  ListDelete(&L,i,&e)
+  ListTraverse(L,visit())  
+} ADT List
+
+void union(List &La, List Lb){
+  La_Len=ListLength(La);
+  Lb_Len=ListLength(Lb);
+  for(i=1;i<=Lb_len;i++){
+    GetElem(Lb,i,e);
+    if(!LocateElem(La,e,equal)) ListInsert(La,++La_len,e);
+  }
+}
+
+void MergeList(List La, List Lb, List&Lc){
+  InitList(Lc);
+  i=j=1;k=0;
+  La_len=ListLength(La);
+  Lb_len=ListLength(Lb);
+  while((i<=La_len)&&(j<=Lb_len)){
+    GetElem(La,i,ai);
+    GetElem(Lb,j,bj);
+    if(ai<=bj){ListInsert(Lc,++k,ai);++i;}
+    else{ListInsert(Lc,++k,bj);++j;}
+  }
+while(i<=La_len){
+  GetElem(La,i++,ai);
+  ListInsert(Lc,++k,ai);
+}
+while(j<=Lb_len){
+  GetElem(Lb,j++,bj);
+  ListInsert(Lc,++k,bj);
+}
+}
 
 2.2 
 p30
