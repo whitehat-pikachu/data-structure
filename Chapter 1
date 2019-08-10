@@ -60,7 +60,29 @@ max, min, abs, floor,ceil, eof, eoln
 (11)logic 
 and &&, or ||
 
+1.4算法和算法分析
 
-p25
+1.4.1 algorithm algorithm analysis
+
+(1)limit
+(2)certainty
+(3)feasible
+(3)input 
+(5)output
+
+1.4.4 requirements for algorithm design
+(1)correctness
+(2)readability
+(3)robustness
+(4)efficiency and low saving space
+
+1.4.3 measurement for algorithm efficiency
+(1) statistics aftermath
+(2) statistics beforemath
+asymptotic time complexity
+frequency count
+
+1.4.4 saving space requirement of algorithm
+space complexity
 
 
