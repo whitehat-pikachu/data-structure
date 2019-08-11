@@ -1,0 +1,93 @@
+2.2 sequence expression and realisation of linear List
+LOC(ai+1)=LOC(ai)+l
+LOC(ai)=LOC(a1)+(i-1)*l
+sequential mapping
+
+#define LIST_INT_SIZE 100   //initial quotien of linear List saving space
+#define LISTINCREMENT       //quotien increment for linear List saving space
+typeof struct{
+  ElemType *elem;   //Address of saving spacee
+  int length;       //Current length
+  int listsize;     //saving space of current 
+}SqList
+
+algorithm 2.3
+Status InitList.Sq(SqList &L){
+  //Create a empty Linear List
+  L.elem=(ElemType *) malloc(LIST_INIT_SIZE *sizeof(ElemType));
+  if(!L.elem)exit(OVERFLOW)   //failure for allocating saving space
+  L.length=0;                 //empty linear list length=0
+  L.listsize=LIST_INIT_SIZE   //initial saving space
+  return OK;   
+}//InitList_Sq
+
+alogrithm 2.4
+Status ListInsert_Sq(SqList &L, int i, ElemType e){
+  //Insert new element i to the place i of Sequential linear list
+  //the legal value of i is 1<=i<ListLength_Sq(L)+1
+  if(i<1 | i>L.length+1) return ERROR;    //the value of i is illegal
+  if(L.length>=L.listsize){     //the current saving space is full, add allocation
+    newbase=(ElemType *)realloc(L.elem,
+                  (L.listsize+LISTINCREMENT)*sizeof(ElemType));
+    if(!newbase)exit(OVERFLOW)  //failure for allocating saving space
+    L.elem=newbase;             //newbase
+    L.listsize+=LISTINCREMENT;  //add saving space
+  }
+  q=&(L.elem[i-1]);             //q is insert position
+  for(p=&(L.elem[L.length-1]);p>=q;--p)*(p+1)=*p;
+                                //elements after insert position move right
+  *q=e;         //insert e
+  ++L.length;   //length of list add 1
+  return OK;
+}//ListInsert_Sq
+
+
+alogrithm 2.5
+Status ListDelete_Sq(SqlList&L, int i, ElemType &e){
+  // delete i element in sequential linear list L, use e to return its value
+  // the legal value of i is 1<=i<=ListLength_Sq(L)
+  if ((i<1)||(i>L.length) return ERROR;   //value of i illegal
+  p=&(L.elem[i-1]);                       //p is the position of deleted element
+  e=*p;                                   //the position of last element
+  q=L.elem+L.length-1;                    //elements after the delete element move left
+  for(++p;p<=q;++p)*(p-1)=*p;
+  --L.length;                             //reduce 1 length of list
+  return OK;
+}//ListDelete.Sq
+
+
+alogrithm 2.6
+int LocateElem_Sq(SqList L, ElemType e,
+  Status(*Compare)(ElemType;ElemType){
+  //search the first value in linear List L which e satisfies position sequence of compare()
+  //if founded, return to the position of L, else return 0
+  i=1;        //the initial value of i is the sequential positon of the first element
+  p=L.elem;   //the initial value of p is the saving position of the first element
+  while(i<=L.length && !(*compare)(*p++,e))++i;
+  if(i<=L.length) return i;
+  else return 0;
+  }//LocateElem.Sq
+  
+  
+algorithm 2.7
+void MergerList_Sq(SqList La, SqList Lb, SqList &Lc){
+  //known that the elements of La & La are non-decreasing sequence
+  //combine La&Lb as Lc, elements of La are also non-decreasing sequence
+  pa=La.elem; pb=Lb.elem;
+  Lc.listsize=Lc.length=La.length+Lb.length;
+  pc=Lc.elem=(ElemType)*malloc(Lc.listsize*sizeof(ElemType));
+  if(!Lc.elem)exit(OVERFLOW);     //failure of saving space allocation
+  pa.last=La.elem+La.length-1;
+  pb_last=Lb.elem+Lb.length-1;
+  while(pa<=pa_lat&&pb<=pb_last){   //combine
+    if(*pa<=*pb)*pc++=*pa++;
+    else *pc++=*pb++;
+  }
+  while(pa<=pa_last)*pc++=*pa++;    //insert the remaining elements of La
+  while(pb<=pb_last)*pc++=*pb++;    //insert the remaining elements of Lb
+}//MergeList.Sq
+
+
+
+
+
