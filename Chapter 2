@@ -52,5 +52,39 @@ while(j<=Lb_len){
 }
 }
 
-2.2 
-p30
+2.2 sequence expression and realisation of linear List
+LOC(ai+1)=LOC(ai)+l
+LOC(ai)=LOC(a1)+(i-1)*l
+sequential mapping
+
+#define LIST_INT_SIZE 100   //initial quotien of linear List saving space
+#define LISTINCREMENT       //quotien increment for linear List saving space
+typeof struct{
+  ElemType *elem;   //Address of saving spacee
+  int length;       //Current length
+  int listsize;     //saving space of current 
+}SqList
+
+Status InitList.Sq(SqList &L){
+  //Create a empty Linear List
+  L.elem=(ElemType *) malloc(LIST_INIT_SIZE *sizeof(ElemType));
+  if(!L.elem)exit(OVERFLOW)   //failure for allocating saving space
+  L.length=0;                 //empty linear list length=0
+  L.listsize=LIST_INIT_SIZE   //initial saving space
+  return OK;   
+}//InitList_Sq
+
+alogrithm 2.3
+Status ListInsert_Sq(SqList &L, int i, ElemType e){
+  //Insert new element i to the place i of Sequential linear list
+  //the legal value of i is 1<=i<ListLength_Sq(L)+1
+  if(i<1 | i>L.length+1) return ERROR;    //the value of i is illegal
+  if(L.length>=L.listsize){     //the current saving space is full, add allocation
+    newbase=(ElemType *)realloc(L.elem,
+                  (L.listsize+LISTINCREMENT)*sizeof(ElemType));
+    if(!newbase)exit(OVERFLOW)
+  
+  }
+}
+
+
