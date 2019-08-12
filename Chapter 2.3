@@ -1,0 +1,29 @@
+2.3 Linked expression and realisation of linear list
+2.3.1 Linked linear list
+node
+null
+
+//
+typeof struct LNode{
+  ElemType  data;
+  struct LNode  *next;
+}LNode, *LinkList;
+
+
+algorithm 2.8
+Status GetElem_L(LinkList L, int i, ElemType &e){
+  //  L 
+  //  i, e, error
+  p=L->next; j=1;
+  while(p&&j<i){
+    p=p->next;++j;
+  }
+  if(!p||j>i)return ERROR;
+  e=p->data;
+  return OK
+}//GetElem.L
+
+s->next=p->next;
+p->next=s;
+p->next=p->next->next;
+
