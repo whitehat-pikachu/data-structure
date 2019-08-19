@@ -27,3 +27,34 @@ s->next=p->next;
 p->next=s;
 p->next=p->next->next;
 
+
+algorithm 2.9
+Status ListDelete L(LinkList &L, int i, ElemType &e){
+//Delete i element in L, return
+p=L; j=0;
+while(p->next && j<i-1){
+//look for i node, use p to forward
+  p=p->next; ++j;
+ }
+ if(!(p->next)||j>i-1) return ERROR; // 
+ q=p->next; p>next=q->next; //delte and release node
+ e=q->data; free(q);
+ return OK;
+}//ListDelete L
+
+
+algorithm 2.10
+
+malloc
+free
+
+void CreateList L(LinkList &L, int n){
+  //逆位序
+  L=(LinkList)malloc(sizeof(LNode));
+  L->next=NULL;
+  for(i=n;i>0;++i){
+    p=(LinkList)malloc(sizeof(LNode));
+    scanf(&p->data);
+    p->next =L->next;L->next=p;
+  }
+}
